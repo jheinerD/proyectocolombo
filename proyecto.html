@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>¿Quieres ser mi novia?</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #c1e9c1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        h1 {
+            color: black;
+            text-align: center;
+            font-size: 70px;
+        }
+        
+        #buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        #btnYes {
+            margin-right: 10px;
+            font-size: 50px;
+        }
+        
+        #btnNo {
+            font-size: 50px;
+        }
+        
+        #message {
+            background-color: lightgreen;
+            color: black;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            font-size: 70px;
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Quieres ser mi novia?</h1>
+    <div id="buttons">
+        <button id="btnYes" onclick="showMessage()">Sí</button>
+        <button id="btnNo" onclick="moveButton()">No</button>
+    </div>
+    
+    <script>
+        function moveButton() {
+            var button = document.getElementById("btnNo");
+            var screenWidth = window.innerWidth;
+            var screenHeight = window.innerHeight;
+            var buttonWidth = button.offsetWidth;
+            var buttonHeight = button.offsetHeight;
+            
+            var maxX = screenWidth - buttonWidth;
+            var maxY = screenHeight - buttonHeight;
+            
+            var newX = Math.floor(Math.random() * maxX);
+            var newY = Math.floor(Math.random() * maxY);
+            
+            button.style.position = "absolute";
+            button.style.left = newX + "px";
+            button.style.top = newY + "px";
+        }
+        
+        function showMessage() {
+            var message = document.createElement("div");
+            message.id = "message";
+            message.innerHTML = "Sabía que ibas a decir que sí &#x1F601;";
+            
+            document.body.appendChild(message);
+        }
+    </script>
+</body>
+</html>
